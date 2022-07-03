@@ -1,0 +1,37 @@
+plugins {
+	id 'org.springframework.boot' version '2.7.1'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'com.vinicius.aspect'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-aop', version: '2.7.1'
+	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
+	implementation group: 'org.aspectj', name: 'aspectjrt', version: '1.9.9.1'
+	implementation group: 'org.aspectj', name: 'aspectjweaver', version: '1.9.9.1'
+	implementation group: 'org.json', name: 'json', version: '20220320'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-parent', version: '2.7.1', ext: 'pom'
+	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-aop', version: '2.7.1'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
